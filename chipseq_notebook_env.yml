@@ -1,0 +1,14 @@
+name: chipseq_notebook_env
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - ipykernel=6.29.5
+  - numpy
+  - pandas
+  - matplotlib
+  - notebook
+  - nbconvert
+  - seaborn
+  - scanpy
+  - matplotlib-venn

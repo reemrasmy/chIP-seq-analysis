@@ -1,7 +1,20 @@
 #!/usr/bin/env nextflow
 
 process BAMCOVERAGE {
+    label 'process_medium'
+    container 'ghcr.io/bf528/deeptools:latest'
+    publishDir params.outdir_final
 
+    input:
+    tuple val(sample_id), path(sorted_bam), path(bai)
+    
+    output:
+    tuple val(sample_id), path("${sample_id}.bw")
+    
+    script:
+    """
+    bamCoverage -b ${sorted_bam} -o ${sample_id}.bw -bs 50 -p ${task.cpus} 
+    """
 
     stub:
     """
